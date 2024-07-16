@@ -1,6 +1,7 @@
 import Card from '../../component/card/Card';
 import Filter from '../../component/filter/Filter';
 import Map from '../../component/map/Map';
+import Ad from '../../component/Advertisement/Ad';
 import { data } from '../../library/homedata';
 import './listpage.scss';
 
@@ -8,7 +9,7 @@ import './listpage.scss';
 
 
 
-function listpage() {
+function Listpage() {
 
 
     const datta = data;
@@ -23,10 +24,11 @@ function listpage() {
                 </div>
             </div>
             <div className="mapContainer">
-                <Map items={data}/>
+                <Map items={datta}/>
+                <Ad/>
             </div>
         </div>
     )
 }
 
-export default listpage
+export default Listpage;
