@@ -3,6 +3,7 @@
 // import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
 import Listpage from "./routes/listpage/listpage"
 import Homepage from "./routes/HomePage/homepage"
+import SPA from "./routes/SPA/SPA"
 
 import {
   createBrowserRouter,
@@ -25,6 +26,10 @@ function App() {
           {
             path:"/list",
             element:<Listpage/>
+          },
+          {
+            path:"/spa",
+            element:<SPA/>
           },
           
         ]

@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './Ad.scss';
-import img1 from './i1.jpg';
-import img2 from './i2.avif';
-import img3 from './i3.webp';
-import img4 from './i4.webp';
-import img5 from './i5.webp';
+import img1 from './ad01.png';
+import img2 from './ad02.png';
+import img3 from './ad03.png';
+import img4 from './ad04.png';
+import img5 from './ad05.png';
 
 function Ad() {
     const images = [img1, img2, img3, img4, img5];
