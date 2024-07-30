@@ -1,7 +1,8 @@
 .listpage {
     display: flex;
     height: 100%;
-
+    padding-left:  2.5rem;;
+    padding-top:  1.5rem;;
     .listContainer {
         flex: 3;
         height: 100%;
@@ -13,6 +14,7 @@
             flex-direction: column;
             gap: 50px;
             overflow-y: scroll;
+            scrollbar-width: none;
         }
     }
 
