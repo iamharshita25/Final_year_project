@@ -10,6 +10,7 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import Layout from "./routes/layout/layout";
+import SignUp from "./routes/Signup/signup";
 
 
 
@@ -30,6 +31,10 @@ function App() {
           {
             path:"/spa",
             element:<SPA/>
+          },
+          {
+            path: "/sign-up",
+            element: <SignUp/>
           },
           
         ]
