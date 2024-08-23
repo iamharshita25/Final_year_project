@@ -11,6 +11,7 @@ import {
 } from "react-router-dom";
 import Layout from "./routes/layout/layout";
 import SignUp from "./routes/Signup/signup";
+import SignIn from "./routes/SignIn/signin";
 
 
 
@@ -33,8 +34,12 @@ function App() {
             element:<SPA/>
           },
           {
-            path: "/sign-up",
+            path: "/signup",
             element: <SignUp/>
+          },
+          {
+            path:"/signin",
+            element:<SignIn/>
           },
           
         ]
