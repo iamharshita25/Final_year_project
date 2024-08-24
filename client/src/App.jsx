@@ -14,6 +14,7 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import Layout from "./routes/layout/layout";
+import SignUp from "./routes/Signup/signup";
 
 
 
@@ -36,16 +37,12 @@ function App() {
             element:<SPA/>
           },
           {
-            path:"/profile",
-            element:<Profile/>
+            path: "/sign-up",
+            element: <SignUp/>
           },
           {
-            path:"/signup",
-            element:<SignUp/>
-          },
-          {
-            path:"/login",
-            element:<Login/>
+            path:"/signin",
+            element:<SignIn/>
           },
           
         ]
