@@ -4,13 +4,16 @@
 import Listpage from "./routes/listpage/listpage"
 import Homepage from "./routes/HomePage/homepage"
 import SPA from "./routes/SPA/SPA"
+import Profile from "./routes/profilepage/Profile";
+import SignUp from "./routes/Signup/signup";
+import Login from "./routes/loginpage/loginpage"
+
 
 import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
 import Layout from "./routes/layout/layout";
-import SignUp from "./routes/Signup/signup";
 
 
 
@@ -33,8 +36,16 @@ function App() {
             element:<SPA/>
           },
           {
-            path: "/sign-up",
-            element: <SignUp/>
+            path:"/profile",
+            element:<Profile/>
+          },
+          {
+            path:"/signup",
+            element:<SignUp/>
+          },
+          {
+            path:"/login",
+            element:<Login/>
           },
           
         ]

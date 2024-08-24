@@ -3,9 +3,12 @@ import Map from '../../component/map/Map'
 import { spa_data, userdata } from "../../library/homedata"
 import tag from "./lets-icons--pin-alt-duotone (1).png"
 import chat from "../../routes/SPA/chat.png"
-
+import house from "../../routes/SPA/pepicons-pop--house-circle.png"
 import save from "../../routes/SPA/material-symbols--bookmark-outline.png"
 import './SPA.scss'
+
+
+
 
 function SPA() {
     return (
@@ -20,10 +23,17 @@ function SPA() {
                                 <div className="address">
                                     <img src={tag} alt="" />
                                     <span>{spa_data.address}</span>
+                                    <div className="buttons">
+                                    <button><img src={chat} alt="" />Send the message</button>
+                                    <button><img src={save} alt="" />Save the place</button>
+                                    <button><img src={house} alt="" />3D Model</button>
+                                </div>
                                 </div>
                                 <div className="price">
                                     ₹{spa_data.price}
+                                    
                                 </div>
+                                
                             </div>
                             <div className="user">
                                 <img src={userdata.image} alt="" />
@@ -103,13 +113,10 @@ function SPA() {
                         </div>
                     </div>
                     <div className="title">Location</div>
-                    <div className="mapContainer">
+                    <div className="mapContainer spaMap">
                         <Map items={[spa_data]} />
                     </div>
-                    <div className="buttons">
-                        <button><img src={chat} alt="" />Send the message</button>
-                        <button><img src={save} alt="" />Save the place</button>
-                    </div>
+                    
                 </div>
             </div>
         </div>

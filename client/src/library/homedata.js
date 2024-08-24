@@ -163,6 +163,11 @@ export const spa_data =
         "src/library/spa2.jpg",
         "src/library/spa3.jpg",
         "src/library/spa4.jpg",
+        "src/library/i1.jpg",
+        "src/library/i2.webp",
+        "src/library/i3.webp",
+        "src/library/i4.jpg",
+
     ],
 
     bedrooms: 4,
@@ -175,7 +180,7 @@ export const spa_data =
     school: "500m away",
     bus_stand : "1km away",
     hospital: "1.5km away",
-    description: 'Shanti niketan is a residential society in the heart of the city.   Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vero voluptatum facere delectus vitae labore dicta beatae, minus illum fuga repudiandae maiores ex voluptate sed.Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque aut beatae ipsam optio, dolorem sint.',
+    description: 'Shanti niketan is a residential society in the heart of the city.   Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vero voluptatum facere delectus vitae labore dicta beatae, minus illum fuga repudiandae maiores ex voluptate sed.Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque aut beatae ipsam optio, dolorem sint Lorem, ipsum dolor sit amet consectetur adipisicing elit. Debitis repudiandae tempore soluta error quo dolores officia beatae in velit nostrum modi labore ducimus neque laudantium perferendis alias, culpa, eveniet distinctio et possimus consequuntur asperiores facere.',
 
 
 
@@ -186,6 +191,7 @@ export const userdata={
     id : 1,
     name: "Sarkan ",
     image: "src/library/user.jpg",
+    e_mail: "sarkan@gmail.com",
 
 
 };

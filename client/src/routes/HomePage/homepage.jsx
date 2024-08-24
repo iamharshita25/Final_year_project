@@ -2,9 +2,12 @@
 import './homepage.scss';
 import SearchBar from "../../component/SearchBar/searchbar"
 
+
 function homepage() {
     return (
+        
         <div className='homepage'>
+            
             <div className="textContainer">
                 <div className="wrapper">
                     <h1 className='title'>Get Your Dream House </h1>

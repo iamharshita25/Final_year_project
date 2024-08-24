@@ -5,16 +5,16 @@ function Card({ item }){
     return(
         <div className="card">
             <Link to={`/${item.id}`} className='imageContainer'>
-            <img src={item.image} alt={item.title} />
+            <Link to="/spa" className='spa'><img src={item.image} alt={item.title} /></Link>
             </Link>
-            <div className="textContainer">
-                <h2 className='tittle'>
+             <div className="textContainer">
+             <Link to="/spa" className='spa'><h2 className='tittle'>
                     <Link to={`/${item.id}`}>{item.title}</Link>
                 </h2>
                 <p className='address'>
                     <img src="src/component/card/gg--pin.png" alt="" />
                     <span>{item.location}</span>
-                </p>
+                </p></Link>
                 <p className='price'>₹{item.price}</p>
                 <div className="bottom">
                     <div className="features">

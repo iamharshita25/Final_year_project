@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import './searchbar.scss'
+import { Link } from 'react-router-dom';
+
 
 const types=["buy","rent","sell"]
 function searchbar  () {
@@ -8,7 +10,7 @@ function searchbar  () {
     location:"",
     minprice:0,
     maxprice:0,
-  })
+  });
 
   const switchtype=(val)=>{
     // if(query.type==="buy"){
@@ -33,9 +35,9 @@ function searchbar  () {
           <input type="text" name='Location' placeholder="City Location"/>
           <input type="number" name='kam-kimat' min={0} max={10000000000} placeholder="Minimum Price"/>
           <input type="number" name='adhiktam-kimat' min={0} max={10000000000} placeholder="Maximium Price"/>
-          <button>
+          <Link to="/list" className='list'><button>
             <img src="src/component/SearchBar/tabler--location-search.png" alt="" />
-          </button>
+          </button></Link>
         </form>
     </div>
   )
