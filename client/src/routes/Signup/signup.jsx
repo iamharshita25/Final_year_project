@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import './SignUp.css'
+import OAuth from "../../component/OAuth/OAuth";
+import styles from './SignUp.module.scss'; 
 export default function SignUp() {
     const [formData, setFormData] = useState({})
     const [error, setError] = useState(null)
@@ -44,50 +45,54 @@ export default function SignUp() {
     }
 
     return (
-        <div>
-            <h1>Sign Up</h1>
-            <form onSubmit={handleSubmit} >
-                <input
-                    type='text' placeholder='First Name'
-                    id='firstName'
-                    aria-label='First Name'
-                    onChange={handleChange}
-                />
-                <input
-                    type='text'
-                    placeholder='Last Name'
-                    id='lastName'
-                    aria-label='Last Name'
-                    onChange={handleChange}
-                />
-                <input
-                    type='email'
-                    placeholder='Email'
-                    id='email'
-                    aria-label='Email'
-                    onChange={handleChange}
-                />
-                <input
-                    type='password'
-                    placeholder='Password'
-                    id='password'
-                    aria-label='Password'
-                    onChange={handleChange}
-                />
-                <input
-                    type='number'
-                    placeholder='Phone Number'
-                    id='phoneNumber'
-                    aria-label='Phone Number'
-                    onChange={handleChange}
-                />
-                <button disabled={loading}>
-                    {loading ? 'Loading...' : 'Sign Up'}
-                </button>
-            </form>
-            <div>
-                <p>Have an account?</p>
-                <Link to="/signin">Sign in</Link>
+        <div className={styles['sign-up-container']}>
+            <div className={styles['sign-up-box']}>
+                <h1>Create your account now</h1>
+                <form onSubmit={handleSubmit}>
+                    <input
+                        type="text"
+                        placeholder="First Name"
+                        id="firstName"
+                        aria-label="First Name"
+                        onChange={handleChange}
+                    />
+                    <input
+                        type="text"
+                        placeholder="Last Name"
+                        id="lastName"
+                        aria-label="Last Name"
+                        onChange={handleChange}
+                    />
+                    <input
+                        type="email"
+                        placeholder="Email"
+                        id="email"
+                        aria-label="Email"
+                        onChange={handleChange}
+                    />
+                    <input
+                        type="password"
+                        placeholder="Password"
+                        id="password"
+                        aria-label="Password"
+                        onChange={handleChange}
+                    />
+                    <input
+                        type="number"
+                        placeholder="Phone Number"
+                        id="phoneNumber"
+                        aria-label="Phone Number"
+                        onChange={handleChange}
+                    />
+                    <button type="submit">
+                        {'SIGN UP'}
+                    </button><br></br>
+
+                <OAuth />
+                </form>
+                <div className={styles['sign-in-link']}>
+                    <p>Already have an account? <Link to="/signin">Sign in</Link></p>
+                </div>
             </div>
             {error && <p style={{ color: 'red' }}>{error}</p>}
         </div>

@@ -67,7 +67,7 @@ nav {
             display: flex;
             align-items: center;
             font-weight: bold;
-
+            gap:10px;
 
             img{
                 width: 40px;
@@ -80,6 +80,12 @@ nav {
                     margin-left: 15px;
                 }
             }
+            .name{
+                  font-size: 1rem;
+        vertical-align: middle;
+        position: relative;
+                top: -15px;
+            }
             span{
                 @include sm{
                     display: none;
@@ -88,7 +94,7 @@ nav {
                     height: 10px;
                 }
             }
-
+            
             .profile{
                 padding: 12px 24px;
                 background-color:#fece51 ;

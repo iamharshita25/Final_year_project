@@ -4,7 +4,7 @@
 import Listpage from "./routes/listpage/listpage"
 import Homepage from "./routes/HomePage/homepage"
 import SPA from "./routes/SPA/SPA"
-// import Profile from "./routes/profilepage/Profile";
+import Profile from "./routes/profilepage/Profile";
 // import Login from "./routes/loginpage/loginpage"
 
 
@@ -42,6 +42,10 @@ function App() {
           {
             path: "/signin",
             element: <Login />
+          },
+          {
+        path: "/profile",
+        element: <Profile />
           },
         ]
         

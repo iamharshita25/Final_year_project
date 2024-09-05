@@ -1,11 +1,18 @@
 import './Profile.scss'
-import {userdata} from '../../library/homedata'
+// import {userdata} from '../../library/homedata'
 import List from '../../component/list/List'
 import Chat from '../../component/chat/Chat'
+import { useSelector } from 'react-redux'
 
+function Profile() {
+    const { currentUser } = useSelector((state) => state.user);
+    console.log('Current User:', currentUser);
 
-function Profile(){
-    return(
+    if (!currentUser) {
+        return <div>Loading...</div>; // Or redirect to another page
+    }
+
+    return (
         <div className="profilePage">
             <div className="details">
                 <div className="wrapper">
@@ -14,29 +21,29 @@ function Profile(){
                         <button>Update Profile</button>
                     </div>
                     <div className="info">
-                        <span>Profile-img: <img src={userdata.image} alt="" /></span>
-                        <span>Username: {userdata.name}</span>
-                        <span>E-mail: {userdata.e_mail}</span>
+                        <span><b>Profile-img:</b> <img src={currentUser.avatar} alt="" /></span>
+                        <span><b>E-mail: </b> {currentUser.email}</span>
+                        <span><b>Name: </b> {currentUser.firstName} {currentUser.lastName}</span>
+                        <span><b>Mobile number: </b> {currentUser.phoneNumber}</span>
                     </div>
                     <div className="title">
                         <h1>My List</h1>
                         <button>Add new House</button>
                     </div>
-                    <List/>
+                    <List />
                     <div className="title">
                         <h1>Saved List</h1>
-                        
                     </div>
-                    <List/>
+                    <List />
                 </div>
             </div>
             <div className="chatcontainer">
                 <div className="wrapper">
-                    <Chat/>
+                    <Chat />
                 </div>
             </div>
         </div>
-    )
+    );
 }
 
 

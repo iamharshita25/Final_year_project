@@ -2,11 +2,12 @@ import { useState } from 'react';
 import './Navbar.scss'
 import { userdata } from "../../library/homedata"
 import { Link } from 'react-router-dom';
-
+import {useSelector} from 'react-redux'
 
 function Navbar() {
+    const { currentUser } = useSelector((state) => state.user);
     const [open, setOpen] = useState(false)
-    const user = true;
+    // const user = true;
 
 
     return (
@@ -22,19 +23,17 @@ function Navbar() {
                 <a href='/'>Agents</a>
             </div>
             <div className="right">
-                {user ? (
+                {currentUser ? (
                     <div className='user'>
-                        <img src={userdata.image} alt="" />
-                        <span>{userdata.name}</span>
-                        <Link to="/profile" className='profile'>
-                        <div className="notification">
-                            3
-                        </div>
-                        <span>Profile</span>
+                        <Link to="/profile" >
+                        <img src={currentUser.avatar} alt="profile" />
+                        <span className='name'>{currentUser.firstName}</span>
                         </Link>
+                           
+                            <span className='profile'>Sign out</span>
 
                     </div>) : (<>
-                        <Link to="/login" className='login'>Login</Link>
+                        <Link to="/signin" className='login'>Login</Link>
                         <Link to="/signup" className=' signup register'>Sign up</Link></>)}
                 <div className="menuIcon">
                     <img src="src/component/Navbar/mage--dots-menu.png" alt="" onClick={() => setOpen(!open)} />
