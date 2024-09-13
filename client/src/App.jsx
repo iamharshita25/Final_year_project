@@ -7,6 +7,7 @@ import SignUp from "./routes/Signup/signup";
 import Login from "./routes/loginpage/loginpage";
 import Layout from "./routes/layout/layout";
 import PrivateRoute from "./component/PrivateRoute/PrivateRoute"
+import UpdateProfile from "./routes/profilepage/updateProfile.jsx";
 
 function App() {
   return (
@@ -25,6 +26,12 @@ function App() {
                 <Profile />
               </PrivateRoute>
             }
+          />
+          <Route path="profile/update" element={
+            <PrivateRoute>
+              <UpdateProfile />
+            </PrivateRoute>
+          }
           />
         </Route>
       </Routes>

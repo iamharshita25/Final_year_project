@@ -3,13 +3,28 @@ import './Navbar.scss'
 import { userdata } from "../../library/homedata"
 import { Link } from 'react-router-dom';
 import {useSelector} from 'react-redux'
-
+import { useDispatch } from 'react-redux';
+import { signOutUserFailure,signOutUserStart, signOutUserSuccess, } from '../../redux/user/userSlice';
 function Navbar() {
     const { currentUser } = useSelector((state) => state.user);
     const [open, setOpen] = useState(false)
     // const user = true;
+    const dispatch = useDispatch();
 
-
+    const handleSignOut = async () => {
+        try {
+            dispatch(signOutUserStart());
+            const res = await fetch('/api/auth/signout');
+            const data = await res.json();
+            if (data.success === false) {
+                dispatch(signOutUserFailure(data.message));
+                return;
+            }
+            dispatch(signOutUserSuccess(data));
+        } catch (error) {
+            dispatch(signOutUserFailure(data.message));
+        }
+    };
     return (
         <nav>
             <div className="left">
@@ -30,7 +45,7 @@ function Navbar() {
                         <span className='name'>{currentUser.firstName}</span>
                         </Link>
                            
-                            <span className='profile'>Sign out</span>
+                            <span onClick={handleSignOut} className='profile'>Sign out</span>
 
                     </div>) : (<>
                         <Link to="/signin" className='login'>Login</Link>
