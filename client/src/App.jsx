@@ -14,7 +14,6 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Layout />}>
-          {/* Child routes will be rendered inside <Outlet /> in Layout */}
           <Route index element={<Homepage />} />
           <Route path="list" element={<Listpage />} />
           <Route path="spa" element={<SPA />} />
