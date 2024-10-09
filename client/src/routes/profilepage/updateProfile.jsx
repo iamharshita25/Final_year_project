@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux'
 import { getDownloadURL, getStorage, ref, uploadBytesResumable } from 'firebase/storage'
 import { useRef, useState, useEffect } from 'react'
 import { app } from '../../firebase'
-import './Profile.scss'
+import './updateprofile.css'
 import { useDispatch } from 'react-redux';
 import {updateUserStart, updateUserSuccess, updateUserFailure, } from '../../redux/user/userSlice.js'
 
@@ -50,6 +50,7 @@ export default function UpdateProfile() {
             }
         );
     };
+
     const handleChange = (e) =>{
         setFormData({...formData,[e.target.id]:e.target.value})
     }
@@ -72,12 +73,16 @@ export default function UpdateProfile() {
 
             dispatch(updateUserSuccess(data));
             setUpdateSuccess(true);
+
+            setTimeout(() => {
+                setUpdateSuccess(false);
+            }, 2000); 
         } catch (error) {
             dispatch(updateUserFailure(error.message));
         }
     };
     return (
-        <div >
+        <div className='profile-section'>
             <h1>Profile</h1>
             <form onSubmit={handleSubmit} >
                 <input
@@ -87,11 +92,11 @@ export default function UpdateProfile() {
                     hidden
                     accept='image/*'
                 />
-               <span> <img height="100px"
+                <span> <img height="100px"
                     onClick={() => fileRef.current.click()}
                     src={formData.avatar || currentUser.avatar}
                     alt='profile'
-                    
+
                 /></span>
                 <p >
                     {fileUploadError ? (
@@ -144,11 +149,11 @@ export default function UpdateProfile() {
                 <button disabled={loading} >
                     {loading ? 'Loading...' : 'Update'}
                 </button>
-            </form>
             <p >{error ? error : ''}</p>
             <p >
                 {updateSuccess ? 'User is updated successfully!' : ''}
             </p>
+            </form>
         </div>
     );
 

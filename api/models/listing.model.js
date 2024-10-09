@@ -14,6 +14,10 @@ const listingSchema = new mongoose.Schema(
             type: String,
             required: true,
         },
+        nearbyPlaces: {
+            type: String,
+            required: true,
+        },
         regularPrice: {
             type: Number,
             required: true,

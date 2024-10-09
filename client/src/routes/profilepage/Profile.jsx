@@ -3,6 +3,7 @@ import './Profile.scss'
 import List from '../../component/list/List'
 import Chat from '../../component/chat/Chat'
 import { useSelector } from 'react-redux'
+import { Link } from 'react-router-dom';
 
 function Profile() {
     const { currentUser } = useSelector((state) => state.user);
@@ -17,7 +18,7 @@ function Profile() {
                 <div className="wrapper">
                     <div className="title">
                         <h1>User Information</h1>
-                        <button>Update Profile</button>
+                        <Link to= "/profileupdate" className='profileupdate'><button>Update Profile</button></Link>
                     </div>
                     <div className="info">
                         <span><b>Profile-img:</b> <img src={currentUser.avatar} alt="" /></span>
@@ -27,7 +28,7 @@ function Profile() {
                     </div>
                     <div className="title">
                         <h1>My List</h1>
-                        <button>Add new House</button>
+                        <Link to= "/addnewhouse" className='addnewhouse'><button>Add New House</button></Link>
                     </div>
                     <List />
                     <div className="title">

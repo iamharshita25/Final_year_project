@@ -8,6 +8,10 @@ import Login from "./routes/loginpage/loginpage";
 import Layout from "./routes/layout/layout";
 import PrivateRoute from "./component/PrivateRoute/PrivateRoute"
 import UpdateProfile from "./routes/profilepage/updateProfile.jsx";
+import Addnewhouse from "./routes/profilepage/addnewhouse.jsx";
+import Pricing from "./routes/profilepage/pricing.jsx";
+import About from "./routes/About/About.jsx";
+import Agent from "./routes/Agents/Agent.jsx"
 
 function App() {
   return (
@@ -19,6 +23,8 @@ function App() {
           <Route path="spa" element={<SPA />} />
           <Route path="signup" element={<SignUp />} />
           <Route path="signin" element={<Login />} />
+          <Route path="about" element={<About />} />
+          <Route path="agent" element={<Agent />} />
           {/* Private Route */}
           <Route path="profile" element={
               <PrivateRoute>
@@ -26,9 +32,21 @@ function App() {
               </PrivateRoute>
             }
           />
-          <Route path="profile/update" element={
+          <Route path="profileupdate" element={
             <PrivateRoute>
               <UpdateProfile />
+            </PrivateRoute>
+          }
+          />
+          <Route path="addnewhouse" element={
+            <PrivateRoute>
+              <Addnewhouse />
+            </PrivateRoute>
+          }
+          />
+          <Route path="Pricing" element={
+            <PrivateRoute>
+              <Pricing />
             </PrivateRoute>
           }
           />

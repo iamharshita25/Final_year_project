@@ -7,7 +7,7 @@ import chatRouter from './routes/chat.route.js';
 import messageRouter from './routes/message.route.js';
 import listingRouter from './routes/listing.route.js'
 import cookieParser from 'cookie-parser';
-import brokerRouter from './routes/broker.routes.js'
+// import brokerRouter from './routes/broker.routes.js'
 dotenv.config();
 
 const mongoURI = process.env.MONGO;
@@ -35,7 +35,7 @@ app.use('/api/auth', authRouter);
 app.use('/api/listing', listingRouter);
 app.use('/api/chats',chatRouter)
 app.use('/api/messages',messageRouter)
-app.use('/api/broker',brokerRouter)
+// app.use('/api/broker',brokerRouter)
 app.use((err,req, res,next) =>{
   const statusCode = err.statusCode || 500
   const message = err.message || 'Internal Server Error';
