@@ -8,7 +8,11 @@ import {
     uploadBytesResumable,
 } from 'firebase/storage';
 import {app} from '../../firebase'
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 const AddPropertyPage = () => {
+    const { currentUser } = useSelector((state) => state.user);
+    const navigate = useNavigate();
     const [files,setFiles] = useState([])
     const [formData, setFormData] = useState({
         imageUrls: [],
@@ -19,10 +23,7 @@ const AddPropertyPage = () => {
         bathrooms: 1,
         nearbyPlaces: '',
         area: 0,
-        options: {
-            selling: false,
-            renting: false
-        },
+        options: 'renting',
         price: ''
     });
     
@@ -83,10 +84,54 @@ const AddPropertyPage = () => {
             );
         });
     };
-    
+    const handleChange = (e) => {
+        if (e.target.id === 'selling' || e.target.id === 'renting') {
+            setFormData({
+                ...formData,
+                options: e.target.id,
+            });
+        }
+        if (
+            e.target.type === 'number' ||
+            e.target.type === 'text' ||
+            e.target.type === 'textarea'
+        ) {
+            setFormData({
+                ...formData,
+                [e.target.id]: e.target.value,
+            });
+        }
+    };
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            if (formData.imageUrls.length < 1)
+                return setError('You must upload at least one image'); setLoading(true);
+            setError(false);
+            const res = await fetch('/api/listing/create', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    ...formData,
+                    userRef: currentUser._id,
+                }),
+            });
+            const data = await res.json();
+            setLoading(false);
+            if (data.success === false) {
+                setError(data.message);
+            }
+            navigate(`/listing/${data._id}`);
+        } catch (error) {
+            setError(error.message);
+            setLoading(false);
+        }
+    };
     return (
         <div className="property-form-container">
-            <form className="property-form" >
+            <form onSubmit={handleSubmit} className="property-form" >
                 <h2>Add New Property</h2>
 
                 <div className="form-row">
@@ -96,7 +141,8 @@ const AddPropertyPage = () => {
                             type="text"
                             name="name"
                             id="name"
-                            
+                            onChange={handleChange}
+                            value={formData.name}
                             
                             required
                         />
@@ -107,6 +153,8 @@ const AddPropertyPage = () => {
                             type="text"
                             name="address" 
                             id="address"
+                            onChange={handleChange}
+                            value={formData.address}
                             required
                         />
                     </div>
@@ -119,6 +167,8 @@ const AddPropertyPage = () => {
                             type="text"
                             name="nearbyPlaces" 
                             id='nearbyPlaces'
+                            onChange={handleChange}
+                            value={formData.nearbyPlaces}
                         />
                     </div>
                     <div className="form-group">
@@ -128,6 +178,8 @@ const AddPropertyPage = () => {
                             name="area" 
                             id="area" 
                             required
+                            onChange={handleChange}
+                            value={formData.area}
                         />
                     </div>
                 </div>
@@ -140,6 +192,8 @@ const AddPropertyPage = () => {
                             name="bedrooms" 
                             id="bedrooms" 
                             required
+                            onChange={handleChange}
+                            value={formData.bedrooms}
                         />
                     </div>
                     <div className="form-group">
@@ -149,6 +203,8 @@ const AddPropertyPage = () => {
                             name="bathrooms" 
                             id="bathrooms" 
                             required
+                            onChange={handleChange}
+                            value={formData.bathrooms}
                         />
                     </div>
                 </div>
@@ -159,6 +215,8 @@ const AddPropertyPage = () => {
                         name="description" 
                         id="description" 
                         required
+                        onChange={handleChange}
+                        value={formData.description}
                     />
                 </div>
 
@@ -173,6 +231,8 @@ const AddPropertyPage = () => {
                                     type="checkbox"
                                     name="selling"
                                     id="selling"
+                                    onChange={handleChange}
+                                    checked={formData.options === 'selling'}
                                 />
                                 Selling
                             </label>
@@ -181,6 +241,8 @@ const AddPropertyPage = () => {
                                     type="checkbox"
                                     name="renting"
                                     id="renting"
+                                    onChange={handleChange}
+                                    checked={formData.options === 'renting'}
                                 />
                                 Renting
                             </label>
@@ -195,7 +257,8 @@ const AddPropertyPage = () => {
                             type="number"
                             name="price"
                             id="price"
-                            
+                            onChange={handleChange}
+                            value={formData.price}
                             required
                         />
                     </div>
@@ -216,7 +279,8 @@ const AddPropertyPage = () => {
                     <button disabled={uploading} type='button' onClick={handleImageSubmit}> {uploading ? 'Uploading...' : 'Upload images'}  </button>
                 </div>
                 <p>   {imageUploadError && imageUploadError}</p>
-                    <button type="submit">Submit Property</button>
+                <button disabled={loading || uploading} type="submit"> {loading ? 'Creating...' : 'Create listing'}</button>
+                {error && <p>{error}</p>}
             </form>
         </div>
     );
