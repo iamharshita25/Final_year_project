@@ -1,5 +1,6 @@
 import React from 'react';
-import './Agent.css'; 
+import './Agent.css';
+import { Link } from 'react-router-dom';
 
 
 const DeveloperCard = ({ name, location, role, profilePic, Experience }) => {
@@ -80,30 +81,43 @@ const DevelopersSection = () => {
     ];
 
     return (
-        <div className="developers-section">
-            <div className="section-header">
-                <h2>Check Our Website Agents </h2>
-                <h2>Their amazing experience</h2>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisc elit, sed do
-                    eiusmod tempor incididunt ut labore et.
-                </p>
+        <>
+            <div className="developers-section">
+                <div className="section-header">
+                    <h2>Check Our Website Agents </h2>
+                    <h2>Their amazing experience</h2>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisc elit, sed do
+                        eiusmod tempor incididunt ut labore et.
+                    </p>
+                </div>
+                <div className="developer-grid">
+                    {developers.map((developer, index) => (
+                        <DeveloperCard
+                            key={index}
+                            name={developer.name}
+                            location={developer.location}
+                            role={developer.role}
+                            Experience={developer.Experience}
+                            profilePic={developer.profilePic}
+                        />
+                    ))}
+                </div>
+
+
             </div>
-            <div className="developer-grid">
-                {developers.map((developer, index) => (
-                    <DeveloperCard
-                        key={index}
-                        name={developer.name}
-                        location={developer.location}
-                        role={developer.role}
-                        Experience={developer.Experience}
-                        profilePic={developer.profilePic}
-                    />
-                ))}
-            </div>
-           
-            
-        </div>
+            <footer className="footer">
+                <div className="footer-content">
+                    <Link to="/" className=' '><div className="logo1"><img src="src\routes\About\1.png" alt="Property 1" /></div></Link>
+                    <ul className="footer-links">
+                        <Link to="/" className=' '><li>Home</li></Link>
+                        <Link to="/about" className='about'><li>About</li></Link>
+                        
+                        <li>Contact</li>
+                    </ul>
+                </div>
+            </footer>
+        </>
     );
 };
 
