@@ -1,3 +1,4 @@
+import axios from 'axios';
 import express from 'express';
 import mongoose from 'mongoose';
 import userRouter from './routes/user.route.js';
@@ -30,6 +31,17 @@ app.listen(3000, () => {
   console.log('Server is running on port 3000!');
 });
 
+// ... (existing code)
+
+app.post('/api/predict-price', async (req, res) => {
+  try {
+    const response = await axios.post('http://localhost:5000/predict', req.body);
+    res.json(response.data);
+  } catch (error) {
+    console.error('Error predicting price:', error);
+    res.status(500).json({ error: 'An error occurred while predicting the price' });
+  }
+});
 app.use('/api/user', userRouter);
 app.use('/api/auth', authRouter);
 app.use('/api/listing', listingRouter);
